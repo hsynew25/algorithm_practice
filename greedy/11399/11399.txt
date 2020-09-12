@@ -1,0 +1,12 @@
+n = int(input())
+p = list(map(int,input().split()))
+p.sort()
+
+ac_p = [0 for _ in range(n)]
+
+ac_p[0] = p[0]
+
+for i in range(1,n):
+    ac_p[i] += ac_p[i-1]+p[i]
+
+print(sum(ac_p))

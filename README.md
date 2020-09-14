@@ -1,9 +1,6 @@
 <h1>algorithm practice</h1>
 <ul>
     <li>Greedy
-        <ul>
-            <li>[11399 ATM](greedy/11399)</li>
-        </ul>
     </li>
     <li>Simulation</li>
     <li>DFS/BFS</li>
@@ -14,3 +11,7 @@
 </ul>
 
 <h2>알고리즘 풀이 정리</h2>
+<h3>greedy</h3>
+ [11399 ATM](https://github.com/hsynew25/algorithm_practice/tree/master/greedy/11399)
+ [2839 설탕배달](https://github.com/hsynew25/algorithm_practice/tree/master/greedy/2839)
+ [11047 동전 0](https://github.com/hsynew25/algorithm_practice/tree/master/greedy/11047)

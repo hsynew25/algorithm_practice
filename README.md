@@ -14,8 +14,6 @@
 * [2839 설탕배달](greedy/2839)
 * [11047 동전 0](greedy/11047)
 
-#### greedy
-
 #### Simulation
 
 #### DFS/BFS

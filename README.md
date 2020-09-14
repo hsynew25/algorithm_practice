@@ -1,17 +1,30 @@
-<h1>algorithm practice</h1>
-<ul>
-    <li>Greedy
-    </li>
-    <li>Simulation</li>
-    <li>DFS/BFS</li>
-    <li>Sorting</li>
-    <li>Binary Search</li>
-    <li>DP</li>
-    <li>etc.</li>
-</ul>
+# algorithm practice
+* [Greedy](#greedy)
+* [Simulation](#simulation)
+* [DFS/BFS](#dfs/bfs)
+* [Sorting](#sorting)
+* [Binary Search](#binary-search)
+* [DP](#dp)
+* [etc.](#etc.)
 
-<h2>알고리즘 풀이 정리</h2>
-<h3>greedy</h3>
- [11399 ATM](https://github.com/hsynew25/algorithm_practice/tree/master/greedy/11399)
- [2839 설탕배달](https://github.com/hsynew25/algorithm_practice/tree/master/greedy/2839)
- [11047 동전 0](https://github.com/hsynew25/algorithm_practice/tree/master/greedy/11047)
+## 알고리즘 풀이 정리
+
+#### greedy
+* [11399 ATM](greedy/11399)
+* [2839 설탕배달](greedy/2839)
+* [11047 동전 0](greedy/11047)
+
+#### greedy
+
+#### Simulation
+
+#### DFS/BFS
+
+#### Sorting
+
+#### Binary Search
+
+#### DP
+
+#### etc.
+

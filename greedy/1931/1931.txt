@@ -1,0 +1,19 @@
+n = int(input())
+arr = []
+
+for _ in range(n):
+    st,ft = map(int,input().split())
+    arr.append([st,ft])
+
+arr.sort(key=lambda x:x[0])
+arr.sort(key=lambda x:x[1])
+
+cnt = 0
+start = 0
+
+for time in arr:
+    if time[0]>=start:
+        cnt+=1
+        start = time[1]
+
+print(cnt)

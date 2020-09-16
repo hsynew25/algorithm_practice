@@ -13,7 +13,7 @@
 * [11399 ATM](greedy/11399)
 * [2839 설탕배달](greedy/2839)
 * [11047 동전 0](greedy/11047)
-
+* [1931 회의실배정](greedy/1931)
 #### Simulation
 
 #### DFS/BFS

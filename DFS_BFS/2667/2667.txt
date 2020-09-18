@@ -1,0 +1,39 @@
+import sys
+input = sys.stdin.readline
+
+n = int(input())
+arr = []
+
+for _ in range(n):
+    arr.append(list(map(int,input().strip())))
+# ╩С го аб ©Л
+dx = [-1,1,0,0]
+dy = [0,0,-1,1]
+
+visited = [[False for col in range(n)] for row in range(n)]
+danji = []
+cnt = 0
+
+def dfs(x,y):
+    visited[x][y]=True
+    danji[cnt] += 1
+    for i in range(4):
+        nx = x+dx[i]
+        ny = y+dy[i]
+        if nx<0 or ny<0 or nx>=n or ny>=n:
+            continue
+        if arr[nx][ny]==1 and visited[nx][ny]==False:
+            dfs(nx,ny)
+
+
+for i in range(n):
+    for j in range(n):
+        if arr[i][j]==1 and visited[i][j]==False:
+            danji.append(0)
+            dfs(i,j)
+            cnt+=1
+
+danji.sort()
+print(len(danji))
+for i in danji:
+    print(i)

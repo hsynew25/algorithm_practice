@@ -1,4 +1,5 @@
-##1931 회의식 배정
+## 1931 회의식 배정
+
 https://www.acmicpc.net/problem/1931
 
 ### How to solve

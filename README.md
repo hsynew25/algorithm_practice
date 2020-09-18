@@ -1,7 +1,7 @@
 # algorithm practice
 * [Greedy](#greedy)
 * [Simulation](#simulation)
-* [DFS/BFS](#dfs/bfs)
+* [DFS/BFS](#DFS/BFS)
 * [Sorting](#sorting)
 * [Binary Search](#binary-search)
 * [DP](#dp)

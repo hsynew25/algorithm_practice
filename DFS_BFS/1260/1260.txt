@@ -1,0 +1,40 @@
+from collections import deque
+
+n,m,v = map(int,input().split())
+graph = [[] for _ in range(n+1)]
+
+for i in range(m):
+    s,f = map(int,input().split())
+    graph[s].append(f)
+    graph[f].append(s)
+
+for i in range(len(graph)):
+    graph[i].sort()
+
+visited = [False for _ in range(n+1)]
+
+def dfs(v):
+    visited[v] = True
+    print(v,end=" ")
+    for i in graph[v]:
+        if visited[i]==False:
+            dfs(i)
+
+def bfs(v):
+    queue = deque()
+    queue.append(v)
+
+    while len(queue)!=0:
+        x = queue.popleft()
+        if visited[x]==False:
+            print(x,end=" ")
+            visited[x] = True
+        for i in graph[x]:
+            if visited[i]==False:
+                queue.append(i)
+
+
+dfs(v)
+print()
+visited = [False for _ in range(n+1)]
+bfs(v)

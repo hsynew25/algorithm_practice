@@ -1,0 +1,28 @@
+import sys
+from collections import deque
+
+n,k = map(int,input().split())
+
+queue=deque()
+queue.append((n,0))
+
+check = [False for i in range(100001)]
+cnt = 0
+
+while len(queue)!=0:
+    val,cnt = queue.popleft()
+    if val==k:
+        print(cnt)
+        break
+    if (val+1)==k or (val-1)==k or (val*2)==k:
+        print(cnt+1)
+        break
+    if (val+1)<100001 and check[val+1] ==False :
+        check[val+1]=True
+        queue.append((val + 1, cnt + 1))
+    if (val-1)>-1 and check[val-1] ==False:
+        check[val-1]=True
+        queue.append((val - 1, cnt + 1))
+    if (val*2)<100001 and check[val*2] ==False:
+        check[val*2]=True
+        queue.append((val * 2, cnt + 1))

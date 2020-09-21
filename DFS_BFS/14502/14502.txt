@@ -1,0 +1,54 @@
+import sys
+import copy
+from itertools import combinations
+from collections import deque
+
+dx = [-1,1,0,0]
+dy = [0,0,-1,1]
+maxnum = 0
+
+def bfs(v,virus):
+    global maxnum
+    w = copy.deepcopy(arr)
+    queue = deque()
+    queue.extend(virus)
+    for i in v:
+        wx, wy = i
+        w[wx][wy]=1
+
+    while len(queue)!=0:
+        x,y = queue.popleft()
+        for i in range(4):
+            nx = x+dx[i]
+            ny = y+dy[i]
+            if nx<0 or ny<0 or nx>=n or ny>=m:
+                continue
+            if w[nx][ny]==0:
+                w[nx][ny] = 2
+                queue.append([nx,ny])
+
+    cnt = 0
+    for i in w:
+        cnt += i.count(0)
+    maxnum = max(maxnum,cnt)
+
+input = sys.stdin.readline
+n,m = map(int,input().split())
+arr = []
+for _ in range(n):
+    arr.append(list(map(int,input().split())))
+
+empty_wall = []
+virus = []
+for i in range(n):
+    for j in range(m):
+        if arr[i][j]==0:
+            empty_wall.append([i,j])
+        elif arr[i][j]==2:
+            virus.append([i,j])
+candidates = list(combinations(empty_wall,3))
+
+for i in candidates:
+    bfs(i,virus)
+
+print(maxnum)

@@ -1,0 +1,31 @@
+import sys
+from collections import deque
+
+input = sys.stdin.readline
+
+n = int(input())
+k = int(input())
+
+arr = [[] for _ in range(n+1)]
+
+for i in range(k):
+    s,f = map(int,input().split())
+    arr[s].append(f)
+    arr[f].append(s)
+
+visited = [False for _ in range(n+1)]
+
+def bfs(x):
+    queue = deque()
+    queue.append(x)
+    visited[x] = True
+    while len(queue)!=0:
+        v = queue.popleft()
+        for i in arr[v]:
+            if visited[i]==False:
+                queue.append(i)
+                visited[i]=True
+
+bfs(1)
+
+print(visited.count(True)-1)

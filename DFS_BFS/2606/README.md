@@ -1,6 +1,6 @@
-## 7576 토마토
+## 2606 바이러스
 
-https://www.acmicpc.net/problem/7576
+https://www.acmicpc.net/problem/2606
 
 ### How to solve
 

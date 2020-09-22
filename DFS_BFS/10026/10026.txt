@@ -1,0 +1,70 @@
+import sys
+import copy
+from itertools import combinations
+from collections import deque
+
+input = sys.stdin.readline
+dx = [-1,1,0,0]
+dy = [0,0,-1,1]
+
+n = int(input())
+arr = [list(map(str,input().rstrip())) for row in range(n)]
+
+def bfs_normal(a,b,v):
+    queue = deque()
+    normal = copy.deepcopy(arr)
+    queue.append([a,b])
+    visited[a][b]=True
+    while len(queue)!=0:
+        x,y = queue.popleft()
+        for i in range(4):
+            nx = x+dx[i]
+            ny = y+dy[i]
+            if nx<0 or ny<0 or nx>=n or ny>=n:
+                continue
+            if normal[nx][ny]==v and visited[nx][ny]==False:
+                visited[nx][ny]=True
+                queue.append([nx,ny])
+
+def bfs(a,b,v):
+    queue = deque()
+    normal = copy.deepcopy(arr)
+    queue.append([a,b])
+    visited[a][b]=True
+    while len(queue)!=0:
+        x,y = queue.popleft()
+        for i in range(4):
+            nx = x+dx[i]
+            ny = y+dy[i]
+            if nx<0 or ny<0 or nx>=n or ny>=n:
+                continue
+            if visited[nx][ny]==False:
+                if v == 'R' or v == 'G':
+                    if arr[nx][ny]=='R' or arr[nx][ny]=='G':
+                        visited[nx][ny]=True
+                        queue.append([nx, ny])
+                else:
+                    if arr[nx][ny]==v:
+                        visited[nx][ny]=True
+                        queue.append([nx,ny])
+
+cnt_normal = 0
+cnt = 0
+visited = [[False for col in range(n)]for row in range(n)]
+
+for i in range(n):
+    for j in range(n):
+        if visited[i][j]==False:
+            bfs_normal(i,j,arr[i][j])
+            cnt_normal += 1
+
+visited = [[False for col in range(n)]for row in range(n)]
+
+for i in range(n):
+    for j in range(n):
+        if visited[i][j]==False:
+            bfs(i,j,arr[i][j])
+            cnt += 1
+
+print(cnt_normal,end=" ")
+print(cnt,end=" ")

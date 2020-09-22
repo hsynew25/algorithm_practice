@@ -1,0 +1,53 @@
+import sys
+from collections import deque
+
+input = sys.stdin.readline
+
+m, n, h = map(int,input().split())
+arr = [[list(map(int,input().split())) for row in range(n)] for height in range(h)]
+
+dx = [-1,1,0,0,0,0]
+dy = [0,0,-1,1,0,0]
+dh = [0,0,0,0,-1,1]
+queue = deque()
+
+def bfs():
+    maxnum = 0
+    while len(queue)!=0:
+        z,x,y = queue.popleft()
+        for i in range(6):
+            nz = z + dh[i]
+            nx = x + dx[i]
+            ny = y + dy[i]
+            if nx<0 or ny<0 or nz<0 or nx>=n or ny>=m or nz>=h:
+                continue
+            if arr[nz][nx][ny]==0:
+                arr[nz][nx][ny]=arr[z][x][y]+1
+                if maxnum < arr[nz][nx][ny]:
+                    maxnum = arr[nz][nx][ny]
+                queue.append([nz,nx,ny])
+    return maxnum
+
+cnt = 0
+for i in arr:
+    for j in i:
+       cnt += j.count(0)
+
+if cnt==0:
+    print(0)
+else:
+    for i in range(h):
+        for j in range(n):
+            for k in range(m):
+                if arr[i][j][k]==1:
+                    queue.append([i,j,k])
+    maxnum = bfs()-1
+    for i in arr:
+        for j in i:
+            if j.count(0)>0:
+                maxnum = -1
+                break
+        if maxnum == -1:
+            break
+
+    print(maxnum)

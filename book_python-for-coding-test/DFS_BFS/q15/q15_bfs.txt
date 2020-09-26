@@ -1,0 +1,35 @@
+import sys
+from collections import deque
+input = sys.stdin.readline
+
+def bfs(v):
+    queue = deque()
+    queue.append(v)
+    distance[v]=0
+    while queue:
+        s = queue.popleft()
+        for i in arr[s]:
+            if distance[i]==-1:
+                queue.append(i)
+                distance[i]=distance[s]+1
+
+n,m,k,x = map(int,input().split())
+arr = [[] for col in range(n+1)]
+
+for i in range(m):
+    s,f = map(int,input().split())
+    arr[s].append(f)
+
+distance = [-1 for col in range(n+1)]
+
+bfs(x)
+
+check = False
+
+for i in range(n+1):
+    if distance[i]==k:
+        print(i)
+        check=True
+
+if check==False:
+    print(-1)

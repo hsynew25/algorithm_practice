@@ -1,0 +1,29 @@
+import sys
+input = sys.stdin.readline
+
+def dfs(v,d):
+    if distance[v]== -1 or distance[v]>d:
+        distance[v]=d
+    for i in arr[v]:
+        dfs(i,d+1)
+
+n,m,k,x = map(int,input().split())
+arr = [[] for col in range(n+1)]
+
+for i in range(m):
+    s,f = map(int,input().split())
+    arr[s].append(f)
+
+distance = [-1 for col in range(n+1)]
+
+dfs(x,0)
+
+check = False
+
+for i in range(n+1):
+    if distance[i]==k:
+        print(i)
+        check=True
+
+if check==False:
+    print(-1)

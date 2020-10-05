@@ -1,0 +1,13 @@
+12
+junk 50 60 100
+sangk 80 60 50
+sunyoun 80 70 100
+soong 50 60 90
+haebin 50 60 100
+kangsoo 60 80 100
+donghyuk 80 60 100
+sei 70 70 70
+wonseob 70 70 90
+sanghyun 70 70 80
+nsj 80 80 80
+taewhan 50 60 90

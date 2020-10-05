@@ -1,0 +1,22 @@
+
+#https://programmers.co.kr/learn/courses/30/lessons/42889?language=python3
+
+def solution(N, stages):
+    answer = []
+    slen = len(stages)
+
+    for i in range(1,N+1):
+        cnt = stages.count(i)
+
+        if slen == 0:
+            fail = 0
+        else:
+            fail = cnt/slen
+
+        answer.append((i,fail))
+        slen -= cnt
+
+    answer = sorted(answer, key=lambda x: -x[1])
+
+    answer = [i[0] for i in answer]
+    return answer

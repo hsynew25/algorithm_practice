@@ -1,0 +1,11 @@
+from bisect import bisect_left,bisect_right
+
+def count_num(arr,x):
+    left = bisect_left(arr,x)
+    right = bisect_right(arr,x)
+    return right-left if right-left!=0 else -1
+
+n,x = map(int,input().split())
+arr = list(map(int,input().split()))
+
+print(count_num(arr,x))

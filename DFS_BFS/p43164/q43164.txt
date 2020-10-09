@@ -1,0 +1,33 @@
+tickets =[['ICN' ,'B'], ['ICN', 'C'] ,['C', 'D'], ['D', 'ICN']]
+
+def solution(tickets):
+    answer = []
+    tickets.sort(key=lambda x:x[1])
+    t = [False for _ in range(len(tickets))]
+
+    def dfs(v):
+        t[v]=True
+        answer.append(tickets[v][0])
+        if False not in t:
+            answer.append(tickets[v][1])
+        for i in range(len(tickets)):
+            if i==v:
+                continue
+            if t[i]==False and tickets[i][0]==tickets[v][1]:
+                dfs(i)
+        if False not in t:
+            return
+        t[v] = False
+        answer.pop()
+        return False
+
+
+    for i in range(len(tickets)):
+        if tickets[i][0]=='ICN' and t[i]==False:
+            b = dfs(i)
+            if b:
+                break
+    print(answer)
+    return answer
+
+solution(tickets)

@@ -1,0 +1,23 @@
+from collections import deque
+def solution(begin, target, words):
+    answer = -1
+    if target not in words:
+        answer = 0
+        return answer
+    slen = len(begin)
+    q = deque()
+    q.append([begin,0])
+
+    while q:
+        w,cnt = q.popleft()
+        if w == target:
+            answer = cnt
+            break
+        for i in words:
+            diff = 0
+            for j in range(slen):
+                if i[j]!=w[j]:
+                    diff+=1
+            if diff==1:
+                q.append([i,cnt+1])
+    return answer

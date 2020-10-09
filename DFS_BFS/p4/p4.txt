@@ -1,0 +1,20 @@
+result = 0
+
+def dfs(numbers,target,cur,cnt,nlen):
+    global result
+    if cnt==nlen:
+        if cur==target:
+            result+=1
+        return
+
+    dfs(numbers,target,cur+numbers[cnt],cnt+1,nlen)
+    dfs(numbers,target,cur-numbers[cnt],cnt+1,nlen)
+
+def solution(numbers,target):
+    answer = 0
+    nlen = len(numbers)
+
+    dfs(numbers,target,0,0,nlen)
+    answer = result
+    print(answer)
+    return answer

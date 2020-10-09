@@ -1,0 +1,25 @@
+def solution(n, computers):
+    answer = 0
+    
+    com = [[] for _ in range(n)]
+    check = [False for _ in range(n)]
+    
+    
+    def dfs(v):
+        check[v]=True
+        for i in com[v]:
+            if check[i]==False:
+                dfs(i)
+    
+    for i in range(n):
+        for j in range(n):
+            if i==j:
+                continue
+            if computers[i][j]==1:
+                com[i].append(j)
+
+    for i in range(n):
+        if check[i]==False:
+            dfs(i)
+            answer+=1
+    return answer

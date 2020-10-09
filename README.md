@@ -10,6 +10,7 @@
 ## 알고리즘 풀이 정리
 
 #### greedy
+###### backjoon
 * [11399 ATM](greedy/11399)
 * [2839 설탕배달](greedy/2839)
 * [11047 동전 0](greedy/11047)
@@ -19,7 +20,12 @@
 * [1541 잃어버린 괄호](greedy/1541)
 * [1946 신입사원](greedy/1946)
 
+###### programmers
+
 #### Simulation
+
+###### backjoon
+###### programmers
 
 #### DFS/BFS
 ###### backjoon
@@ -44,9 +50,21 @@
 
 #### Sorting
 
+###### backjoon
+###### programmers
+
 #### Binary Search
+
+###### backjoon
+###### programmers
 
 #### DP
 
+###### backjoon
+###### programmers
+
 #### etc.
+
+###### backjoon
+###### programmers
 

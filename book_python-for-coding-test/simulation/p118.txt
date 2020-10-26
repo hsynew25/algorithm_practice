@@ -1,0 +1,70 @@
+//게임개발
+
+#include <iostream>
+
+using namespace std;
+
+int n, m;
+int arr[50][50];
+bool visited[50][50] = { false, };
+int cnt = 0;
+
+struct character {
+	int x;
+	int y;
+	int dir;
+};
+
+int dx[4] = { -1,0,1,0 };
+int dy[4] = { 0,1,0,-1 };
+
+int main() {
+	character cur;
+	cin >> n >> m;
+	cin >> cur.x >> cur.y >> cur.dir;
+
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < m; j++) {
+			cin >> arr[i][j];
+		}
+	}
+
+	visited[cur.x][cur.y] = true;
+	cnt++;
+
+	while (1) {
+		bool flag = false;
+		for (int i = 0; i < 4; i++) {
+			cur.dir -= 1;
+			if (cur.dir < 0) {
+				cur.dir += 4;
+			}
+			int nx = cur.x + dx[cur.dir];
+			int ny = cur.y + dy[cur.dir];
+			if (nx<0 || ny<0 || nx>n || ny>m) continue;
+			if (arr[nx][ny] == 1) continue;
+			if (arr[nx][ny] == 0 && visited[nx][ny] == false) {
+				visited[nx][ny] = true;
+				cnt++;
+				cur.x = nx;
+				cur.y = ny;
+				flag = true;
+				break;
+			}
+		}
+		if (!flag) {
+			int nx = cur.x + dx[(cur.dir + 2) % 4];
+			int ny = cur.y + dy[(cur.dir + 2) % 4];
+			if (arr[nx][ny] == 1) {
+				break;
+			}
+			cur.x = nx;
+			cur.y = ny;
+		}
+	}
+
+	cout << cnt;
+
+
+	return 0;
+}

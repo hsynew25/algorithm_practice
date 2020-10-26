@@ -1,0 +1,102 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int arr[10] = { 7,5,9,0,3,1,6,2,4,8 };
+int n = 10;
+
+int c_arr[15] = { 7,5,9,0,3,1,6,2,9,1,4,8,0,5,2 };
+
+
+void swap(int &a, int &b) {
+	int temp = a;
+	a = b;
+	b = temp;
+}
+
+int find_max_value(int arr[],int arr_size) {
+	int max_value = 0;
+	for (int i = 0; i < arr_size; i++) {
+		if (arr[i] > max_value) {
+			max_value = arr[i];
+		}
+	}
+	return max_value;
+}
+
+void selective_sort() {
+	for (int i = 0; i < n; i++) {
+		int min_idx = i;
+		for (int j = i + 1; j < n; j++) {
+			if (arr[j] < arr[min_idx]) {
+				min_idx = j;
+			}
+		}
+		swap(arr[i], arr[min_idx]);
+	}
+}
+
+void insert_sort() {
+	for (int i = 1; i < n; i++) {
+		for (int j = i; j >= 0; j--) {
+			if (arr[j] < arr[j - 1]) {
+				swap(arr[j], arr[j - 1]);
+			}
+			else break;
+		}
+	}
+}
+
+void quick_sort(int start, int end) {
+	if (start >= end) return;
+	int pivot = start;
+	int left = start + 1;
+	int right = end;
+	while (left <= right) {
+		while (arr[left] < arr[pivot]) {
+			left++;
+		}
+		while (arr[right] > arr[pivot]) {
+			right--;
+		}
+		if (left > right) {
+			swap(arr[right], arr[pivot]);
+		}else {
+			swap(arr[left], arr[right]);
+		}
+	}
+	quick_sort(start, right - 1);
+	quick_sort(right + 1, end);
+}
+
+vector<int> count_sort() {
+	int arr_size = sizeof(c_arr) / sizeof(int);
+	int max_value = find_max_value(c_arr, arr_size);
+	vector<int> count_arr(max_value+1,0);
+	for (int i = 0; i < arr_size; i++) {
+		count_arr[c_arr[i]]++;
+	}
+	return count_arr;
+}
+
+int main() {
+	
+	//selective_sort();
+	//insert_sort();
+	//quick_sort(0,n-1);
+	
+	/*for (int i = 0; i < n; i++) {
+		cout << arr[i] << '\n';
+	}*/
+
+	vector<int> count_arr = count_sort();
+
+	for (int i = 0; i < count_arr.size(); i++) {
+		for (int j = 0; j < count_arr[i]; j++) {
+			cout << i << ' ';
+		}
+	}
+
+	return 0;
+}
